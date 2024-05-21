@@ -1,4 +1,4 @@
-# `@napi-rs/package-template`
+# `eslint-barrel-file-utils`
 
 ![https://github.com/napi-rs/package-template/actions](https://github.com/napi-rs/package-template/workflows/CI/badge.svg)
 
@@ -14,7 +14,7 @@
 ## Install this test package
 
 ```
-yarn add @napi-rs/package-template
+yarn add eslint-barrel-file-utils
 ```
 
 ## Support matrix
@@ -41,7 +41,7 @@ yarn add @napi-rs/package-template
 
 ### Build
 
-After `yarn build/npm run build` command, you can see `package-template.[darwin|win32|linux].node` file in project root. This is the native addon built from [lib.rs](./src/lib.rs).
+After `yarn build/npm run build` command, you can see `eslint-barrel-file-utils.[darwin|win32|linux].node` file in project root. This is the native addon built from [lib.rs](./src/lib.rs).
 
 ### Test
 
@@ -61,7 +61,7 @@ The other problem is how to deliver prebuild `binary` to users. Downloading it i
 
 In this package, we choose a better way to solve this problem. We release different `npm packages` for different platforms. And add it to `optionalDependencies` before releasing the `Major` package to npm.
 
-`NPM` will choose which native package should download from `registry` automatically. You can see [npm](./npm) dir for details. And you can also run `yarn add @napi-rs/package-template` to see how it works.
+`NPM` will choose which native package should download from `registry` automatically. You can see [npm](./npm) dir for details. And you can also run `yarn add eslint-barrel-file-utils` to see how it works.
 
 ## Develop requirements
 
