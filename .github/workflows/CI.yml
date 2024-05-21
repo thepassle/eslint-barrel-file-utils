@@ -1,7 +1,7 @@
 name: CI
 env:
   DEBUG: napi:*
-  APP_NAME: '@thepassle/eslint-barrel-file-utils'
+  APP_NAME: 'eslint-barrel-file-utils'
   MACOSX_DEPLOYMENT_TARGET: '10.13'
 permissions:
   contents: write
