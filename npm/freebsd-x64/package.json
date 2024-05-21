@@ -28,5 +28,5 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "repository": "git@github.com:napi-rs/eslint-barrel-file-utils.git"
+  "repository": "git@github.com:thepassle/eslint-barrel-file-utils.git"
 }
