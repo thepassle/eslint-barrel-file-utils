@@ -1,0 +1,28 @@
+[package]
+authors = ["Pascal Schilp"]
+edition = "2021"
+name    = "napi-package-template"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+napi = "2"
+regex = "1.10.3"
+napi-derive = "2"
+oxc_parser = "0.13.0"
+oxc_allocator = "0.13.0"
+oxc_module_lexer = "0.13.0"
+oxc_span = "0.13.0"
+oxc_resolver = { version = "1.7.0", features = ["package_json_raw_json_api"] }
+pathdiff = "0.2.1"
+oxc_ast = "0.13.0"
+
+[build-dependencies]
+napi-build = "2"
+
+[profile.release]
+lto = true
