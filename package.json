@@ -65,20 +65,5 @@
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
-  },
-  "optionalDependencies": {
-    "eslint-barrel-file-utils-win32-x64-msvc": "0.0.8",
-    "eslint-barrel-file-utils-darwin-x64": "0.0.8",
-    "eslint-barrel-file-utils-linux-x64-gnu": "0.0.8",
-    "eslint-barrel-file-utils-linux-x64-musl": "0.0.8",
-    "eslint-barrel-file-utils-linux-arm64-gnu": "0.0.8",
-    "eslint-barrel-file-utils-win32-ia32-msvc": "0.0.8",
-    "eslint-barrel-file-utils-linux-arm-gnueabihf": "0.0.8",
-    "eslint-barrel-file-utils-darwin-arm64": "0.0.8",
-    "eslint-barrel-file-utils-android-arm64": "0.0.8",
-    "eslint-barrel-file-utils-freebsd-x64": "0.0.8",
-    "eslint-barrel-file-utils-linux-arm64-musl": "0.0.8",
-    "eslint-barrel-file-utils-win32-arm64-msvc": "0.0.8",
-    "eslint-barrel-file-utils-android-arm-eabi": "0.0.8"
   }
 }
