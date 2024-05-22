@@ -28,10 +28,12 @@ pub fn resolve_rs(
   importee: String,
   condition_names: Vec<String>,
   main_fields: Vec<String>,
+  extensions: Vec<String>,
 ) -> Result<String> {
   let options: ResolveOptions = ResolveOptions {
     condition_names,
     main_fields,
+    extensions,
     ..ResolveOptions::default()
   };
   let resolver = Resolver::new(options);
@@ -95,11 +97,13 @@ pub fn count_module_graph_size_rs(
   base_path: String,
   condition_names: Vec<String>,
   main_fields: Vec<String>,
+  extensions: Vec<String>,
   builtin_modules: Vec<String>,
 ) -> Result<i32> {
   let options = ResolveOptions {
     condition_names,
     main_fields,
+    extensions,
     ..ResolveOptions::default()
   };
   let mut visited_modules = HashSet::new();
