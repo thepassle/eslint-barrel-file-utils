@@ -1,6 +1,6 @@
 {
   "name": "eslint-barrel-file-utils-android-arm64",
-  "version": "0.0.2",
+  "version": "0.0.8",
   "os": [
     "android"
   ],

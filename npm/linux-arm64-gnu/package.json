@@ -1,6 +1,6 @@
 {
   "name": "eslint-barrel-file-utils-linux-arm64-gnu",
-  "version": "0.0.2",
+  "version": "0.0.8",
   "os": [
     "linux"
   ],
