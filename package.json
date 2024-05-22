@@ -16,6 +16,7 @@
   ],
   "files": [
     "index.d.ts",
+    "rs.cjs",
     "index.cjs",
     "index.js"
   ],
@@ -42,7 +43,7 @@
   },
   "scripts": {
     "artifacts": "napi artifacts",
-    "build": "napi build --platform --js=index.cjs --release --pipe \"prettier -w\"",
+    "build": "napi build --platform --js=rs.cjs --release --pipe \"prettier -w\"",
     "build:debug": "napi build --platform --pipe \"prettier -w\"",
     "format": "run-p format:prettier format:rs format:toml",
     "format:prettier": "prettier . -w",

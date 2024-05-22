@@ -2,7 +2,7 @@ import {
   countModuleGraphSizeRs as count_module_graph_size_rs, 
   isBarrelFileRs as is_barrel_file, 
   resolveRs as resolve_rs
-} from './index.cjs';
+} from './rs.cjs';
 import { builtinModules } from "module";
 
 /**
