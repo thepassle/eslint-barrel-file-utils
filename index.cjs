@@ -39,8 +39,18 @@ function count_module_graph_size(entrypoints, options = {}) {
    exportConditions = ["node", "import"],
    mainFields = ["module", "browser", "main"],
    extensions = [".js", ".ts", ".tsx", ".jsx", ".json", ".node"],
+   tsconfig,
  } = options;
 
+ const tsConfigFile = tsconfig?.configFile;
+ const tsReferences = tsconfig?.references;
+ 
+ // alias is expected to be a vector
+ let alias = options.alias ?? [];
+ if (options.alias && typeof options.alias === "object") {
+    alias = Object.entries(options.alias);
+ }
+ 
  const processedEntrypoints = (typeof entrypoints === "string" ? [entrypoints] : entrypoints);
  const result = count_module_graph_size_rs(
    processedEntrypoints, 
@@ -48,7 +58,10 @@ function count_module_graph_size(entrypoints, options = {}) {
    exportConditions, 
    mainFields,
    extensions,
-   builtinModules
+   builtinModules,
+   tsConfigFile,
+   tsReferences,
+   alias
  );
  return result;
 }

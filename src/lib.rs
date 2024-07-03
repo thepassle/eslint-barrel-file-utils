@@ -5,7 +5,7 @@ use oxc_allocator::Allocator;
 use oxc_ast::ast::Statement;
 use oxc_module_lexer::ModuleLexer;
 use oxc_parser::Parser;
-use oxc_resolver::{ResolveOptions, Resolver};
+use oxc_resolver::{AliasValue, ResolveOptions, Resolver, TsconfigOptions, TsconfigReferences};
 use oxc_span::SourceType;
 use pathdiff::diff_paths;
 use regex::Regex;
@@ -90,6 +90,33 @@ pub fn is_barrel_file_rs(
   Ok(false)
 }
 
+fn create_tsconfig_option(
+  config_file: String, 
+  tsconfig_references: Option<Vec<String>>
+) -> TsconfigOptions {
+  TsconfigOptions {
+    config_file: PathBuf::from(config_file),
+    references: match tsconfig_references {
+      None => TsconfigReferences::Auto,
+      Some(refs) => TsconfigReferences::Paths(refs.into_iter().map(PathBuf::from).collect())
+    } 
+  }
+}
+
+fn create_alias_option(aliases: Vec<(String, Vec<String>)>) -> Vec<(String, Vec<AliasValue>)> {
+  aliases.into_iter()
+    .map(|(key, val)| {
+      let mapped_alias = if val.is_empty() {
+        vec![AliasValue::Ignore]
+      } else {
+        val.into_iter().map(AliasValue::Path).collect()
+      };
+
+      (key, mapped_alias)
+    })
+    .collect()
+}
+
 #[napi]
 pub fn count_module_graph_size_rs(
   env: Env,
@@ -99,11 +126,28 @@ pub fn count_module_graph_size_rs(
   main_fields: Vec<String>,
   extensions: Vec<String>,
   builtin_modules: Vec<String>,
+  tsconfig_config_file: Option<String>,
+  tsconfig_references: Option<Vec<String>>,
+  alias: Vec<(String, Vec<String>)>,
 ) -> Result<i32> {
+  let tsconfig = match tsconfig_config_file {
+    None => None,
+    _ => Some(
+      create_tsconfig_option(
+        tsconfig_config_file.unwrap(), 
+        tsconfig_references
+      )
+    )
+  };
+
+  let alias_options = create_alias_option(alias);
+
   let options = ResolveOptions {
     condition_names,
     main_fields,
     extensions,
+    tsconfig,
+    alias: alias_options,
     ..ResolveOptions::default()
   };
   let mut visited_modules = HashSet::new();
